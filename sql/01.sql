@@ -7,3 +7,12 @@
  * The following tutorial has a solution for this problem:
  * https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-correlated-subquery/
  */
+
+SELECT film_id, title FROM film
+WHERE rental_rate > (
+    SELECT AVG(rental_rate)
+    from film
+    WHERE rating = rating
+)
+ORDER BY title;
+
